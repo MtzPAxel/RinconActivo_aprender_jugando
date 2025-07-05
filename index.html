@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rincón Activo</title>
+  <link rel="stylesheet" href="Style.css">
+  <style>
+    #intervencion .card-content {
+  padding: 0;
+}
+
+#intervencion iframe {
+  width: 100vw !important;
+  height: calc(100vh - 210px) !important; /* Ajusta 210px según el alto de tu header/nav */
+  min-height: 500px;
+  border: none;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+  background: #f1faff;
+}
+
+@media (max-width: 700px) {
+  #intervencion iframe {
+    height: 60vh !important;
+    min-height: 300px;
+  }
+}
+
+/* Minijuegos: Fondo, bordes y separación */
+#preparacion .card-content > div[style*="#fffbe7"],
+#utilidad .card-content > div[style*="#fffbe7"],
+#instrumentos .card-content > div[style*="#fffbe7"] {
+  background: #fffbe7;
+  border-radius: 10px;
+  padding: 18px 16px 16px 16px;
+  margin-top: 24px;
+  box-shadow: 0 2px 8px 0 #e0e0e0;
+  border: 1.5px solid #ffe082;
+}
+
+/* Título del minijuego */
+#preparacion .card-content strong,
+#utilidad .card-content strong,
+#instrumentos .card-content strong {
+  color: #b8860b;
+  font-size: 1.13em;
+  letter-spacing: 0.5px;
+}
+
+/* Listas y opciones de minijuegos */
+#preparacion-juego li,
+#instrumentos-lista li,
+#instrumentos-lista + div label,
+#instrumentos-lista + div select {
+  font-size: 1em;
+}
+
+#preparacion-juego li {
+  background: #e0f7fa;
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin: 8px 0;
+  cursor: move;
+  border: 1.5px solid #b2ebf2;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px #e0e0e0;
+}
+
+#preparacion-juego li:active {
+  background: #b2ebf2;
+}
+
+#preparacion-juego {
+  margin-bottom: 10px;
+}
+
+/* Selects y labels en minijuegos */
+#utilidad select,
+#instrumentos select {
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1.2px solid #b2ebf2;
+  background: #f9f9f9;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  font-size: 1em;
+  transition: border 0.2s;
+}
+
+#utilidad select:focus,
+#instrumentos select:focus {
+  border: 1.5px solid #0077b6;
+  outline: none;
+}
+
+#instrumentos-juego-feedback,
+#preparacion-juego-feedback,
+#utilidad-juego-feedback {
+  font-size: 1.08em;
+  margin-top: 10px;
+  min-height: 24px;
+}
+
+#instrumentos .card-content ol {
+  margin-bottom: 0;
+}
+
+#instrumentos .card-content label {
+  font-size: 1em;
+  margin-right: 10px;
+}
+
+#instrumentos .card-content > div[style*="display:flex"] {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 700px) {
+  #instrumentos .card-content > div[style*="display:flex"] {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+  </style>
+</head>
+<body>
+<header>
+  <h1>Rincón Activo</h1>
+  <p><em>Aprender Jugando</em></p>
+</header>
+
+<nav class="nav">
+  <button onclick="showSection('teorias')">Teorías de la Enseñanza y el Currículo</button>
+  <button onclick="showSection('modelos')">Modelos de Enseñanza</button>
+  <button onclick="showSection('preparacion')">Preparación de Clase</button>
+  <button onclick="showSection('intervencion')">Intervención Educativa</button>
+  <button onclick="showSection('utilidad')">Utilidad de la Evaluación</button>
+  <button onclick="showSection('instrumentos')">Instrumentos de Evaluación</button>
+</nav>
+
+<div class="container">
+  <div id="bienvenida" class="section active">
+    <div class="card">
+      <div class="card-content" style="text-align:center;">
+        <h2>¡Bienvenido a Rincón Activo!</h2>
+        <p style="font-size:1.15em; margin-bottom:18px;">
+          Este espacio está diseñado para que aprendas sobre teorías, modelos y herramientas educativas de manera interactiva y divertida.<br>
+          Explora cada sección, juega y pon a prueba tus conocimientos.
+        </p>
+        <button onclick="showSection('teorias')" style="margin-top:18px; font-size:1.1em; background:#0096c7; color:#fff; border:none; border-radius:8px; padding:10px 28px; cursor:pointer;">
+          ¡Comenzar!
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="teorias" class="section active">
+    <div class="card">
+      <div class="card-content">
+        <h2>Teorías de la Enseñanza y el Currículo</h2>
+        <div class="autor-row">
+          <div class="autor-box" onclick="toggleInfo(this)">
+            <img src="Ralph Tyler.jpg" alt="Ralph Tyler" class="autor-img">
+            <p><strong>Ralph Tyler:</strong><br>Modelo basado en objetivos, experiencias de aprendizaje, organización y evaluación.</p>
+            <div class="autor-info">
+              <p>Ralph Tyler fue un influyente educador estadounidense conocido como el "padre de la evaluación educativa". Su modelo curricular se centra en la definición clara de objetivos, la selección de experiencias de aprendizaje alineadas con esos objetivos, la organización lógica de los contenidos y la evaluación constante del proceso educativo.</p>
+              <p><strong>Ejemplo:</strong> Definir como objetivo que los alumnos comprendan la fotosíntesis, diseñar actividades prácticas en el laboratorio y evaluar mediante una presentación grupal.</p>
+              <div class="autor-video">
+                <video src="MODELO CURRICULAR DE TYLER.mp4" controls width="180" height="100"></video>
+              </div>
+            </div>
+          </div>
+          <div class="autor-box" onclick="toggleInfo(this)">
+            <img src="Jose Antonio Arnaz.jpg" alt="José Antonio Arnaz" class="autor-img">
+            <p><strong>José Antonio Arnaz:</strong><br>Planificación y desarrollo curricular con enfoque en organización y evaluación.</p>
+            <div class="autor-info">
+              <p>José Antonio Arnaz fue un pedagogo mexicano que propuso un modelo de planeación didáctica basado en la organización sistemática de los elementos curriculares, enfatizando la importancia de la evaluación y la coherencia entre los objetivos, contenidos y métodos de enseñanza.</p>
+                <div class="autor-video">
+                <video src="EL CURRÍCULO  JOSE ARNAZ.mp4" controls width="180" height="100"></video>
+              </div>
+            </div>
+          </div>
+          <div class="autor-box" onclick="toggleInfo(this)">
+            <img src="Angel Diaz Barriga.jpg" alt="Ángel Díaz Barriga" class="autor-img">
+            <p><strong>Ángel Díaz Barriga:</strong><br>Modelos críticos e integradores que consideran el contexto social y político.</p>
+            <div class="autor-info">
+              <p>Ángel Díaz Barriga es un destacado investigador mexicano en el campo de la educación. Sus aportes se centran en la crítica a los modelos tradicionales y en la integración de factores sociales, culturales y políticos en el currículo, promoviendo una educación más reflexiva y contextualizada.</p>
+            <div class="autor-video">
+                <video src="Angel Díaz Barriga.mp4" controls width="180" height="100"></video>
+              </div>
+            </div>
+          </div>
+          <div class="autor-box" onclick="toggleInfo(this)">
+            <img src="Margarita Pansza.jpg" alt="Margarita Pansza" class="autor-img">
+            <p><strong>Margarita Pansza:</strong><br>Currículo por competencias.</p>
+            <div class="autor-info">
+              <p>Margarita Pansza ha trabajado en el desarrollo e implementación del currículo por competencias, donde el aprendizaje se orienta a la adquisición de habilidades y capacidades prácticas, promoviendo la autonomía y la aplicación de conocimientos en contextos reales.</p>
+            <div class="autor-video">
+                <video src="Margarita Pansza.mp4" controls width="180" height="100"></video>
+              </div>
+            </div>
+          </div>
+          <div class="autor-box" onclick="toggleInfo(this)">
+            <img src="R y Maria.png" alt="Raquel Glazman y María de Ibarrola" class="autor-img">
+            <p><strong>Raquel Glazman y María de Ibarrola:</strong><br>Modelo basado en investigación y adecuación al contexto.</p>
+            <div class="autor-info">
+              <p>Raquel Glazman y María de Ibarrola son investigadoras mexicanas que han aportado al análisis y desarrollo curricular desde una perspectiva investigativa, enfatizando la importancia de adaptar el currículo a las necesidades y realidades de cada contexto educativo.</p>
+            <div class="autor-video">
+                <video src="Glazman e Ibarrola.mp4" controls width="180" height="100"></video>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Imagen de autores después de la lista de autores -->
+        <img src="Autores.jpg" alt="Autores" style="max-width:320px; display:block; margin:18px auto 24px; border-radius:14px; box-shadow:0 2px 12px #b2ebf2;">
+      </div>
+    </div>
+  </div>
+
+  <div id="modelos" class="section">
+    <div class="card">
+      <div class="card-content">
+        <h2>Modelos de Enseñanza</h2>
+        <p style="font-size:1.1rem; margin-bottom: 18px;">
+          Los <strong>modelos de enseñanza</strong> son enfoques teóricos y prácticos que orientan la labor docente y el proceso de aprendizaje. Cada modelo responde a una visión particular sobre cómo se produce el aprendizaje y cuál debe ser el papel del docente y del estudiante.
+        </p>
+        <ul style="list-style: none; padding: 0;">
+          <li style="margin-bottom: 18px;">
+            <span style="font-weight:bold; color:#0077b6;">Modelo tradicional:</span><br>
+            <span style="margin-left: 10px;">
+              Se centra en la transmisión de conocimientos por parte del docente, quien es la figura principal en el proceso educativo. Los estudiantes suelen tener un rol más pasivo, asimilando la información proporcionada. Es un modelo directivo, estructurado y enfocado en la memorización y repetición.<br>
+              <span style="color:#222;"><strong>Ejemplo:</strong> El profesor explica la lección en el pizarrón y los alumnos toman apuntes y memorizan los contenidos para un examen.</span>
+              <div style="margin-top:10px; background:#f1faff; border-radius:8px; padding:8px; width:210px;">
+                <video src="TRADICIONAL.mp4" controls width="190" height="110"></video>
+                <div style="font-size:0.95em; text-align:center; margin-top:4px;">Video: Modelo Tradicional</div>
+              </div>
+            </span>
+          </li>
+          <li style="margin-bottom: 18px;">
+            <span style="font-weight:bold; color:#0077b6;">Modelo conductista:</span><br>
+            <span style="margin-left: 10px;">
+              Basado en la psicología conductista, este modelo utiliza estímulos y refuerzos para modelar el comportamiento y el aprendizaje. El docente controla el proceso y ofrece retroalimentación constante. El aprendizaje se mide a través de resultados observables y cuantificables.<br>
+              <span style="color:#222;"><strong>Ejemplo:</strong> Un colegio que adopta este modelo fomenta el aprendizaje activo, la colaboración y la resolución de problemas reales. El docente premia con puntos o reconocimientos a los estudiantes que responden correctamente y repite ejercicios hasta que todos logren el objetivo.</span>
+              <div style="margin-top:10px; background:#f1faff; border-radius:8px; padding:8px; width:210px;">
+                <video src="MODELO PEDAGÓGICO CONDUCTISTA.mp4" controls width="190" height="110"></video>
+                <div style="font-size:0.95em; text-align:center; margin-top:4px;">Video: Modelo Conductista</div>
+              </div>
+            </span>
+          </li>
+          <li style="margin-bottom: 18px;">
+            <span style="font-weight:bold; color:#0077b6;">Modelo constructivista:</span><br>
+            <span style="margin-left: 10px;">
+              Este modelo enfatiza el aprendizaje activo y la construcción del conocimiento por parte del estudiante, quien interpreta la información y la relaciona con sus experiencias previas. El docente es un facilitador y guía, promoviendo la resolución de problemas y el trabajo colaborativo.<br>
+              <span style="color:#222;"><strong>Ejemplo:</strong> Los alumnos trabajan en equipo para resolver un problema real, investigan y presentan sus conclusiones, mientras el docente orienta el proceso.</span>
+              <div style="margin-top:10px; background:#f1faff; border-radius:8px; padding:8px; width:210px;">
+                <video src="EL CONSTRUCTIVISMO.mp4" controls width="190" height="110"></video>
+                <div style="font-size:0.95em; text-align:center; margin-top:4px;">Video: Modelo Constructivista</div>
+              </div>
+            </span>
+          </li>
+          <li style="margin-bottom: 18px;">
+            <span style="font-weight:bold; color:#0077b6;">Modelo humanista:</span><br>
+            <span style="margin-left: 10px;">
+              Se enfoca en el desarrollo integral de la persona, considerando sus necesidades, intereses y potencialidades. Busca un aprendizaje significativo, promueve la autonomía, la creatividad y el respeto por la individualidad de cada estudiante.<br>
+              <span style="color:#222;"><strong>Ejemplo:</strong> El docente permite que los estudiantes elijan proyectos según sus intereses y fomenta la autoevaluación y el trabajo creativo.</span>
+              <div style="margin-top:10px; background:#f1faff; border-radius:8px; padding:8px; width:210px;">
+                <video src="Humanismo.mp4" controls width="190" height="110"></video>
+                <div style="font-size:0.95em; text-align:center; margin-top:4px;">Video: Modelo Humanista</div>
+              </div>
+            </span>
+          </li>
+          <li style="margin-bottom: 18px;">
+            <span style="font-weight:bold; color:#0077b6;">Modelo por competencias:</span><br>
+            <span style="margin-left: 10px;">
+              Se centra en el desarrollo de habilidades y capacidades específicas que son relevantes para el desempeño en la vida profesional y personal. Los estudiantes son evaluados en función de su capacidad para aplicar los conocimientos y habilidades adquiridas en situaciones reales.<br>
+              <span style="color:#222;"><strong>Ejemplo:</strong> Los alumnos realizan una práctica profesional o resuelven casos reales donde demuestran lo aprendido.</span>
+              <div style="margin-top:10px; background:#f1faff; border-radius:8px; padding:8px; width:210px;">
+                <video src="por Competencias.mp4" controls width="190" height="110"></video>
+                <div style="font-size:0.95em; text-align:center; margin-top:4px;">Video: Modelo por Competencias</div>
+              </div>
+            </span>
+          </li>
+          <li style="margin-bottom: 18px;">
+            <span style="font-weight:bold; color:#0077b6;">Modelos emergentes:</span><br>
+            <span style="margin-left: 10px;">
+              Incluyen enfoques como el <strong>aprendizaje basado en proyectos</strong>, el <strong>aprendizaje invertido (flipped classroom)</strong>, el <strong>aprendizaje colaborativo</strong> y el <strong>aprendizaje personalizado</strong>. Estos modelos buscan adaptarse a las nuevas formas de aprender y a las necesidades de los estudiantes en el siglo XXI, integrando tecnología, flexibilidad y atención a la diversidad.<br>
+              <span style="color:#222;"><strong>Ejemplo:</strong> Los estudiantes investigan un tema en casa (flipped classroom) y en clase desarrollan proyectos colaborativos usando tecnología.</span>
+            </span>
+          </li>
+        </ul>
+        <div style="margin-top:24px; background:#e0f7fa; border-radius:8px; padding:16px;">
+          <strong>¿Sabías que...?</strong><br>
+          <span style="font-size:1rem;">
+            Los modelos de enseñanza no son excluyentes: en la práctica, los docentes suelen combinar elementos de varios modelos para responder a las características y necesidades de sus estudiantes.
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="preparacion" class="section">
+    <div class="card">
+      <div class="card-content">
+        <h2>Preparación de Clase</h2>
+        <p>
+          La <strong>preparación de clase</strong> es un proceso fundamental para lograr una enseñanza efectiva. Implica planificar de manera anticipada los objetivos de aprendizaje, los contenidos, las actividades, los recursos y la evaluación. Una buena preparación permite al docente anticipar posibles dificultades, adaptar la enseñanza a las características del grupo y aprovechar mejor el tiempo en el aula.
+        </p>
+        <ul>
+          <li><strong>Definir objetivos:</strong> ¿Qué se espera que los estudiantes aprendan? Los objetivos deben ser claros, medibles y alineados con el currículo.</li>
+          <li><strong>Seleccionar contenidos:</strong> Elegir los temas y conceptos clave, priorizando aquellos que sean relevantes y significativos para los estudiantes.</li>
+          <li><strong>Diseñar actividades:</strong> Planificar ejercicios, dinámicas, proyectos o experimentos que promuevan la participación activa y el aprendizaje significativo.</li>
+          <li><strong>Elegir recursos:</strong> Materiales, tecnología, libros, videos, juegos didácticos, plataformas digitales, etc. Adaptar los recursos a las características del grupo.</li>
+          <li><strong>Prever la evaluación:</strong> Decidir cómo se comprobará el aprendizaje (preguntas, tareas, proyectos, autoevaluación, coevaluación, etc.).</li>
+          <li><strong>Adaptar la clase:</strong> Considerar la diversidad, los estilos y ritmos de aprendizaje, y prever apoyos para estudiantes que lo requieran.</li>
+          <li><strong>Organizar el tiempo:</strong> Distribuir las actividades y los momentos de la clase para aprovechar al máximo el tiempo disponible.</li>
+        </ul>
+        <div style="margin-top:16px; background:#f1faff; border-radius:8px; padding:12px;">
+          <strong>Consejo:</strong> Una clase bien preparada favorece la participación, la motivación y el logro de los aprendizajes esperados. Recuerda siempre tener un plan B por si surge algún imprevisto.
+        </div>
+        <div style="margin-top:14px; background:#e0f7fa; border-radius:8px; padding:12px;">
+          <strong>Ejemplo práctico:</strong><br>
+          Se propone una secuencia clara para la planeación de clases:
+          <ol style="margin-top:8px;">
+            <li><b>Propósito:</b> Define el objetivo central de la clase, lo que se espera que los estudiantes logren.</li>
+            <li><b>Organización:</b> Selecciona y estructura los contenidos, recursos y actividades de acuerdo con el propósito.</li>
+            <li><b>Trabajo:</b> Desarrolla las actividades en el aula, promoviendo la participación activa y el aprendizaje colaborativo.</li>
+            <li><b>Retroalimentación:</b> Evalúa y brinda comentarios sobre el desempeño de los estudiantes, identificando logros y áreas de mejora.</li>
+            <li><b>Orientación:</b> Ajusta la enseñanza y orienta a los estudiantes para fortalecer su aprendizaje en futuras sesiones.</li>
+          </ol>
+          <span style="display:block; margin-top:8px;">
+            <b>Ejemplo:</b> Si el propósito es que los alumnos comprendan el ciclo del agua, el docente organiza materiales visuales y experimentos, realiza actividades grupales para observar el fenómeno, retroalimenta con preguntas y orienta a los estudiantes para que relacionen el tema con situaciones cotidianas.
+          </span>
+        </div>
+        <!-- Minijuego: Ordena los pasos de la preparación de clase -->
+        <div style="margin-top:22px; background:#fffbe7; border-radius:8px; padding:14px;">
+          <strong>Minijuego: Ordena los pasos de la preparación de clase</strong>
+          <p>Arrastra y suelta los pasos en el orden correcto:</p>
+          <ul id="preparacion-juego" style="list-style:none; padding:0; margin:0;">
+            <li draggable="true" style="margin:6px 0; background:#e0f7fa; border-radius:6px; padding:8px; cursor:move;">Seleccionar contenidos</li>
+            <li draggable="true" style="margin:6px 0; background:#e0f7fa; border-radius:6px; padding:8px; cursor:move;">Diseñar actividades</li>
+            <li draggable="true" style="margin:6px 0; background:#e0f7fa; border-radius:6px; padding:8px; cursor:move;">Definir objetivos</li>
+            <li draggable="true" style="margin:6px 0; background:#e0f7fa; border-radius:6px; padding:8px; cursor:move;">Elegir recursos</li>
+            <li draggable="true" style="margin:6px 0; background:#e0f7fa; border-radius:6px; padding:8px; cursor:move;">Prever la evaluación</li>
+          </ul>
+          <button onclick="verificarPreparacionJuego()" style="margin-top:10px;">Verificar</button>
+          <div id="preparacion-juego-feedback" style="margin-top:8px; font-weight:bold;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="intervencion" class="section">
+    <div class="card">
+      <div class="card-content">
+        <h2>Intervención Educativa</h2>
+        <p>Serie de acciones planificadas y sistemáticas dirigidas a mejorar el proceso de enseñanza-aprendizaje, ya sea para prevenir dificultades, abordar necesidades específicas de los estudiantes o promover su desarrollo integral.</p>
+        <div style="margin-top:18px; background:#f1faff; border-radius:8px; padding:12px;">
+          <strong>Infografía:</strong> Intervención en el Aula<br>
+          <iframe src="INFOGRAFIA.pdf" width="100%" height="85vh" style="border:none; border-radius:8px; margin-top:10px; min-height:500px;"></iframe>
+          <div style="text-align:center; margin-top:8px;">
+            <a href="INFOGRAFIA.pdf" target="_blank" style="color:#0077b6; text-decoration:underline;">Ver o descargar infografía en PDF</a>
+          </div>
+        </div>
+        <!-- Infografía 2 agregada aquí -->
+        <div style="margin-top:22px; background:#f1faff; border-radius:8px; padding:12px;">
+          <strong>Infografía 2:</strong> Estrategias de Intervención<br>
+          <iframe src="INFOGRAFIA 2.pdf" width="100%" height="85vh" style="border:none; border-radius:8px; margin-top:10px; min-height:500px;"></iframe>
+          <div style="text-align:center; margin-top:8px;">
+            <a href="Infografia 2.pdf" target="_blank" style="color:#0077b6; text-decoration:underline;">Ver o descargar infografía 2 en PDF</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="utilidad" class="section">
+    <div class="card">
+      <div class="card-content">
+        <h2>Utilidad de la Evaluación</h2>
+        <p>
+          La <strong>evaluación</strong> es un proceso sistemático y continuo que permite obtener información relevante sobre el aprendizaje de los estudiantes y la eficacia de la enseñanza. Su utilidad va mucho más allá de asignar una calificación: ayuda a identificar avances, dificultades, necesidades y potencialidades, tanto de los alumnos como de la práctica docente.
+        </p>
+        <p>
+          Es fundamental distinguir entre <strong>evaluación</strong>, <strong>medición</strong> y <strong>calificación</strong>:
+          <ul>
+            <li><strong>Evaluación:</strong> Proceso integral que implica recolectar, analizar y reflexionar sobre información para mejorar el aprendizaje y la enseñanza.</li>
+            <li><strong>Medición:</strong> Asignación de valores numéricos o cualitativos a los aprendizajes observados, generalmente a través de pruebas o instrumentos.</li>
+            <li><strong>Calificación:</strong> Expresión final del resultado de la evaluación, usualmente en forma de número, letra o concepto.</li>
+          </ul>
+        </p>
+        <p>
+          La evaluación cumple funciones <strong>diagnóstica</strong> (antes de iniciar un proceso), <strong>formativa</strong> (durante el proceso, para retroalimentar y ajustar) y <strong>sumativa</strong> (al final, para certificar aprendizajes). Además, puede ser <strong>auto</strong>, <strong>coevaluación</strong> o <strong>heteroevaluación</strong> según quién la realice.
+        </p>
+        <ul>
+          <li><strong>Diagnóstica:</strong> Detecta los conocimientos previos y necesidades antes de iniciar un tema. Permite adaptar la enseñanza y partir del nivel real del grupo.</li>
+          <li><strong>Formativa:</strong> Da seguimiento al proceso de aprendizaje y permite ajustar la enseñanza en el camino. Ofrece retroalimentación constante y ayuda a corregir errores a tiempo.</li>
+          <li><strong>Sumativa:</strong> Valora los resultados al final de un periodo o unidad. Suele expresarse en calificaciones o informes y sirve para certificar aprendizajes.</li>
+          <li><strong>Autoevaluación y coevaluación:</strong> Permiten que los estudiantes reflexionen sobre su propio aprendizaje y el de sus compañeros, desarrollando responsabilidad y pensamiento crítico.</li>
+        </ul>
+        <div style="margin-top:16px; background:#f1faff; border-radius:8px; padding:12px;">
+          <strong>Importante:</strong> Evaluar no solo es calificar, sino también retroalimentar y orientar a los estudiantes para que mejoren. La evaluación debe ser justa, transparente y centrada en el aprendizaje.
+        </div>
+        <div style="margin-top:14px; background:#e0f7fa; border-radius:8px; padding:12px;">
+          <strong>Ejemplo:</strong> Al finalizar un proyecto, el docente puede aplicar una rúbrica, pedir a los estudiantes que se autoevalúen y organizar una retroalimentación grupal para identificar logros y áreas de mejora.
+        </div>
+        <!-- Minijuego: ¿Qué tipo de evaluación es? -->
+        <div style="margin-top:22px; background:#fffbe7; border-radius:8px; padding:14px;">
+          <strong>Minijuego: ¿Qué tipo de evaluación es?</strong>
+          <p>Selecciona el tipo de evaluación según el ejemplo:</p>
+          <div>
+            <b>Ejemplo 1:</b> Antes de iniciar un tema, el docente aplica un cuestionario para conocer los conocimientos previos.<br>
+            <select id="eval1">
+              <option value="">Selecciona...</option>
+              <option value="diagnostica">Diagnóstica</option>
+              <option value="formativa">Formativa</option>
+              <option value="sumativa">Sumativa</option>
+            </select>
+          </div>
+          <div style="margin-top:8px;">
+            <b>Ejemplo 2:</b> Durante el curso, el docente revisa tareas y da retroalimentación para mejorar.<br>
+            <select id="eval2">
+              <option value="">Selecciona...</option>
+              <option value="diagnostica">Diagnóstica</option>
+              <option value="formativa">Formativa</option>
+              <option value="sumativa">Sumativa</option>
+            </select>
+          </div>
+          <div style="margin-top:8px;">
+            <b>Ejemplo 3:</b> Al final del semestre, se realiza un examen final para calificar el aprendizaje.<br>
+            <select id="eval3">
+              <option value="">Selecciona...</option>
+              <option value="diagnostica">Diagnóstica</option>
+              <option value="formativa">Formativa</option>
+              <option value="sumativa">Sumativa</option>
+            </select>
+          </div>
+          <button onclick="verificarUtilidadJuego()" style="margin-top:10px;">Verificar</button>
+          <div id="utilidad-juego-feedback" style="margin-top:8px; font-weight:bold;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="instrumentos" class="section">
+    <div class="card">
+      <div class="card-content">
+        <h2>Instrumentos de Evaluación</h2>
+        <p>
+          Los <strong>instrumentos de evaluación</strong> son herramientas que permiten recopilar información sobre el aprendizaje y desempeño de los estudiantes. La elección del instrumento depende del objetivo de la evaluación y del tipo de aprendizaje que se desea valorar. Utilizar una variedad de instrumentos enriquece el proceso y permite valorar diferentes competencias.
+        </p>
+        <p>
+          Es importante diferenciar entre instrumentos <strong>tradicionales</strong> (como exámenes escritos y listas de cotejo) y <strong>auténticos</strong>, que buscan valorar el desempeño en situaciones reales y complejas. Los instrumentos auténticos favorecen la evaluación de competencias, habilidades y actitudes, no solo de conocimientos teóricos.
+        </p>
+        <ul>
+          <li><strong>Proyectos:</strong> Permiten a los estudiantes aplicar conocimientos en la resolución de problemas reales.</li>
+          <li><strong>Estudios de caso:</strong> Analizan situaciones concretas para proponer soluciones fundamentadas.</li>
+          <li><strong>Portafolios:</strong> Recopilan evidencias del aprendizaje a lo largo del tiempo.</li>
+          <li><strong>Rúbricas:</strong> Facilitan la evaluación objetiva y transparente de tareas complejas.</li>
+          <li><strong>Observación directa:</strong> El docente registra comportamientos, habilidades y actitudes en el contexto natural.</li>
+        </ul>
+        <p>
+          La selección del instrumento debe responder al propósito de la evaluación y a las competencias que se desean valorar. Además, es recomendable informar a los estudiantes sobre los criterios e instrumentos que se usarán para que comprendan cómo serán evaluados.
+        </p>
+        <ul>
+          <li><strong>Rúbricas:</strong> Tablas con criterios y niveles de desempeño para valorar trabajos, proyectos o presentaciones. Facilitan la retroalimentación clara y objetiva.</li>
+          <li><strong>Listas de cotejo:</strong> Listados de aspectos a observar o verificar en una tarea o actividad. Son útiles para comprobar si se cumplen ciertos pasos o requisitos.</li>
+          <li><strong>Escalas de valoración:</strong> Permiten calificar el grado de cumplimiento de ciertos criterios (por ejemplo: siempre, a veces, nunca).</li>
+          <li><strong>Exámenes:</strong> Pruebas escritas u orales para comprobar conocimientos o habilidades. Pueden ser de opción múltiple, preguntas abiertas, resolución de problemas, etc.</li>
+          <li><strong>Portafolios:</strong> Colección de trabajos del estudiante que evidencian su progreso a lo largo del tiempo. Permiten una visión integral del aprendizaje.</li>
+          <li><strong>Observación:</strong> Registro sistemático de comportamientos, actitudes o habilidades en situaciones reales. Puede apoyarse en notas de campo o registros anecdóticos.</li>
+          <li><strong>Proyectos y presentaciones:</strong> Permiten evaluar la aplicación de conocimientos en situaciones reales y el desarrollo de habilidades como la comunicación y el trabajo en equipo.</li>
+          <li><strong>Diarios y reflexiones:</strong> Espacios donde los estudiantes expresan sus aprendizajes, dudas y avances, favoreciendo la metacognición.</li>
+        </ul>
+        <div style="margin-top:16px; background:#f1faff; border-radius:8px; padding:12px;">
+          <strong>Tip:</strong> Utilizar diferentes instrumentos permite obtener una visión más completa y justa del aprendizaje de cada estudiante. Es recomendable informar a los estudiantes sobre los criterios e instrumentos que se usarán.
+        </div>
+        <div style="margin-top:14px; background:#e0f7fa; border-radius:8px; padding:12px;">
+          <strong>Ejemplo:</strong> Para evaluar una exposición oral, el docente puede usar una rúbrica, pedir una autoevaluación y complementar con observaciones sobre la participación y el dominio del tema.
+        </div>
+        <!-- Minijuego: Relaciona el instrumento con su descripción -->
+        <div style="margin-top:22px; background:#fffbe7; border-radius:8px; padding:14px;">
+          <strong>Minijuego: Relaciona el instrumento con su descripción</strong>
+          <div style="display:flex; flex-wrap:wrap; gap:16px;">
+            <div>
+              <b>Instrumento</b>
+              <ol id="instrumentos-lista" style="padding-left:18px;">
+                <li>Rúbrica</li>
+                <li>Lista de cotejo</li>
+                <li>Portafolio</li>
+              </ol>
+            </div>
+            <div>
+              <b>Descripción</b>
+              <ol type="A" style="padding-left:18px;">
+                <li id="descA">Colección de trabajos del estudiante que evidencian su progreso.</li>
+                <li id="descB">Tabla con criterios y niveles de desempeño para valorar trabajos.</li>
+                <li id="descC">Listado de aspectos a observar o verificar en una tarea.</li>
+              </ol>
+            </div>
+          </div>
+          <div style="margin-top:10px;">
+            <label>Rúbrica = 
+              <select id="rel1">
+                <option value="">Selecciona...</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+              </select>
+            </label>
+            <label style="margin-left:12px;">Lista de cotejo = 
+              <select id="rel2">
+                <option value="">Selecciona...</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+              </select>
+            </label>
+            <label style="margin-left:12px;">Portafolio = 
+              <select id="rel3">
+                <option value="">Selecciona...</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+              </select>
+            </label>
+          </div>
+          <button onclick="verificarInstrumentosJuego()" style="margin-top:10px;">Verificar</button>
+          <div id="instrumentos-juego-feedback" style="margin-top:8px; font-weight:bold;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  &copy; 2025 Rincón Activo
+</footer>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  function toggleInfo(element) {
+    const info = element.querySelector('.autor-info');
+    info.style.display = info.style.display === 'block' ? 'none' : 'block';
+  }
+
+  // --- Juego de Arrastrar y Soltar (Preparación de Clase) ---
+  const listaJuego = document.getElementById('preparacion-juego');
+  if (listaJuego) {
+    let dragSrcEl = null;
+    listaJuego.querySelectorAll('li').forEach(item => {
+      item.addEventListener('dragstart', function (e) {
+        dragSrcEl = this;
+        e.dataTransfer.effectAllowed = 'move';
+      });
+      item.addEventListener('dragover', function (e) {
+        e.preventDefault();
+        this.style.background = '#b2ebf2';
+      });
+      item.addEventListener('dragleave', function () {
+        this.style.background = '#e0f7fa';
+      });
+      item.addEventListener('drop', function (e) {
+        e.preventDefault();
+        if (dragSrcEl !== this) {
+          let temp = this.innerHTML;
+          this.innerHTML = dragSrcEl.innerHTML;
+          dragSrcEl.innerHTML = temp;
+        }
+        this.style.background = '#e0f7fa';
+      });
+      item.addEventListener('dragend', function () {
+        listaJuego.querySelectorAll('li').forEach(li => li.style.background = '#e0f7fa');
+      });
+    });
+  }
+  window.verificarPreparacionJuego = function () {
+    const ordenCorrecto = [
+      "Definir objetivos",
+      "Seleccionar contenidos",
+      "Diseñar actividades",
+      "Elegir recursos",
+      "Prever la evaluación"
+    ];
+    const items = Array.from(document.querySelectorAll('#preparacion-juego li')).map(li => li.textContent.trim());
+    const correcto = ordenCorrecto.every((txt, i) => txt === items[i]);
+    const feedback = document.getElementById('preparacion-juego-feedback');
+    feedback.textContent = correcto ? "¡Correcto! Has ordenado bien los pasos." : "Revisa el orden e inténtalo de nuevo.";
+    feedback.style.color = correcto ? "#009900" : "#c70039";
+  };
+
+  // --- Juego de Selección Múltiple (Utilidad de la Evaluación) ---
+  window.verificarUtilidadJuego = function () {
+    const r1 = document.getElementById('eval1').value;
+    const r2 = document.getElementById('eval2').value;
+    const r3 = document.getElementById('eval3').value;
+    const correcto = r1 === "diagnostica" && r2 === "formativa" && r3 === "sumativa";
+    const feedback = document.getElementById('utilidad-juego-feedback');
+    feedback.textContent = correcto ? "¡Muy bien! Todas las respuestas son correctas." : "Hay respuestas incorrectas. Intenta de nuevo.";
+    feedback.style.color = correcto ? "#009900" : "#c70039";
+  };
+
+  // --- Juego de Relacionar (Instrumentos de Evaluación) ---
+  window.verificarInstrumentosJuego = function () {
+    const rel1 = document.getElementById('rel1').value;
+    const rel2 = document.getElementById('rel2').value;
+    const rel3 = document.getElementById('rel3').value;
+    const correcto = rel1 === "B" && rel2 === "C" && rel3 === "A";
+    const feedback = document.getElementById('instrumentos-juego-feedback');
+    feedback.textContent = correcto ? "¡Correcto! Has relacionado bien los instrumentos." : "Revisa las relaciones e inténtalo de nuevo.";
+    feedback.style.color = correcto ? "#009900" : "#c70039";
+  };
+
+  // Al cargar, muestra solo la bienvenida
+  window.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+    var bienvenida = document.getElementById('bienvenida');
+    if (bienvenida) bienvenida.classList.add('active');
+  });
+</script>
+</body>
+</html>
