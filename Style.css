@@ -1,0 +1,303 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: #f5f5fa;
+  background-image: url('Recursos/BIENVENIDA.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+header {
+  background: linear-gradient(90deg, #0096c7, #00b4d8);
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  background: rgba(255,255,255,0.92);
+  border-radius: 16px;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.nav button {
+  background: #0096c7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 15px 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.nav button:hover {
+  background: #0077b6;
+}
+
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-content > h2 {
+  text-align: center;
+  width: 100%;
+}
+
+.autor-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+h2 {
+  color: #0077b6;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+footer {
+  background: #0077b6;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+.autor-box {
+  background: #f0f8ff;
+  border: 2px solid #bde0fe;
+  border-radius: 14px;
+  padding: 16px 10px 10px 10px;
+  box-shadow: 0 2px 8px rgba(0,150,199,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  position: relative;
+  min-height: 270px;
+  max-width: 220px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.autor-box:hover, .autor-box.open {
+  transform: scale(1.06);
+  box-shadow: 0 6px 24px rgba(0,150,199,0.18);
+  z-index: 2;
+}
+
+.autor-info {
+  display: none;
+  margin-top: 10px;
+  background: #e0f7fa;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 0.97rem;
+  color: #0077b6;
+  box-shadow: 0 2px 8px rgba(0,150,199,0.06);
+}
+
+.autor-box.open .autor-info {
+  display: block;
+}
+
+.autor-info p strong {
+  display: inline-block;
+  transition: color 0.2s;
+}
+
+.autor-info p strong:hover {
+  color: #20bfef;
+}
+
+.autor-info p:last-child:hover {
+  color: #000d97;
+}
+
+.autor-img {
+  width: 120px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.autor-video {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.autor-video video {
+  width: 240px;
+  height: 140px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,150,199,0.10);
+}
+
+#crossword-container-teorias table {
+  margin: auto;
+  border-collapse: separate;
+  border-spacing: 3px;
+}
+
+#crossword-container-teorias td {
+  width: 38px;
+  height: 38px;
+  border: 2px solid #0096c7;
+  background: #e0f7fa;
+  padding: 0;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,150,199,0.10);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+#crossword-container-teorias td input {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 1.4rem;
+  border: none;
+  background: transparent;
+  text-transform: uppercase;
+  outline: none;
+  color: #0077b6;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+#crossword-container-teorias td input:focus {
+  background: #bde0fe;
+  box-shadow: 0 0 0 2px #0096c7;
+}
+
+#crossword-container-teorias td[style*="border: none"] {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Coloca esto al inicio de tu archivo Style.css para asegurar prioridad */
+.section,
+.card,
+.card-content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.section:not(#bienvenida) {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Agrega esto en tu Style.css o dentro del <style> en tu HTML */
+
+nav.nav {
+  margin-top: 18px;
+  margin-bottom: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+@media (max-width: 700px) {
+  nav.nav {
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+}
+
+/* Style.css o dentro del <style> en tu <head> */
+#bienvenida .card {
+  background: rgba(255,255,255,0.70) !important;
+  box-shadow: 0 4px 24px 0 #b2ebf2;
+  border-radius: 18px;
+}
+
+/* Agranda la imagen de autores al pasar el cursor encima, ocupando la ventana */
+#teorias .card-content img[alt="Autores"] {
+  transition: all 0.4s cubic-bezier(.4,2,.6,1);
+  cursor: pointer;
+  z-index: 2;
+  position: relative;
+}
+
+#teorias .card-content img[alt="Autores"]:hover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: 0 0 0 9999px rgba(0,0,0,0.65);
+  object-fit: contain;
+  background: #fff;
+  z-index: 9999;
+}
