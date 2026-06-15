@@ -6,131 +6,131 @@
   <title>Rincón Activo</title>
   <link rel="stylesheet" href="Style.css">
   <style>
-    #intervencion .card-content {
-  padding: 0;
-}
+    /* Estilos existentes */
+    #intervencion .card-content { padding: 0; }
+    #intervencion iframe {
+      width: 100vw !important;
+      height: calc(100vh - 210px) !important;
+      min-height: 500px;
+      border: none;
+      border-radius: 8px;
+      display: block;
+      margin: 0 auto;
+      background: #f1faff;
+    }
+    @media (max-width: 700px) {
+      #intervencion iframe { height: 60vh !important; min-height: 300px; }
+    }
 
-#intervencion iframe {
-  width: 100vw !important;
-  height: calc(100vh - 210px) !important; /* Ajusta 210px según el alto de tu header/nav */
-  min-height: 500px;
-  border: none;
-  border-radius: 8px;
-  display: block;
-  margin: 0 auto;
-  background: #f1faff;
-}
+    #preparacion .card-content > div[style*="#fffbe7"],
+    #utilidad .card-content > div[style*="#fffbe7"],
+    #instrumentos .card-content > div[style*="#fffbe7"] {
+      background: #fffbe7;
+      border-radius: 10px;
+      padding: 18px 16px 16px 16px;
+      margin-top: 24px;
+      box-shadow: 0 2px 8px 0 #e0e0e0;
+      border: 1.5px solid #ffe082;
+    }
 
-@media (max-width: 700px) {
-  #intervencion iframe {
-    height: 60vh !important;
-    min-height: 300px;
-  }
-}
+    #preparacion .card-content strong,
+    #utilidad .card-content strong,
+    #instrumentos .card-content strong {
+      color: #b8860b;
+      font-size: 1.13em;
+      letter-spacing: 0.5px;
+    }
 
-/* Minijuegos: Fondo, bordes y separación */
-#preparacion .card-content > div[style*="#fffbe7"],
-#utilidad .card-content > div[style*="#fffbe7"],
-#instrumentos .card-content > div[style*="#fffbe7"] {
-  background: #fffbe7;
-  border-radius: 10px;
-  padding: 18px 16px 16px 16px;
-  margin-top: 24px;
-  box-shadow: 0 2px 8px 0 #e0e0e0;
-  border: 1.5px solid #ffe082;
-}
+    #preparacion-juego li,
+    #instrumentos-lista li,
+    #instrumentos-lista + div label,
+    #instrumentos-lista + div select { font-size: 1em; }
 
-/* Título del minijuego */
-#preparacion .card-content strong,
-#utilidad .card-content strong,
-#instrumentos .card-content strong {
-  color: #b8860b;
-  font-size: 1.13em;
-  letter-spacing: 0.5px;
-}
+    #preparacion-juego li {
+      background: #e0f7fa;
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin: 8px 0;
+      cursor: move;
+      border: 1.5px solid #b2ebf2;
+      transition: background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 1px 4px #e0e0e0;
+    }
+    #preparacion-juego li:active { background: #b2ebf2; }
+    #preparacion-juego { margin-bottom: 10px; }
 
-/* Listas y opciones de minijuegos */
-#preparacion-juego li,
-#instrumentos-lista li,
-#instrumentos-lista + div label,
-#instrumentos-lista + div select {
-  font-size: 1em;
-}
+    #utilidad select, #instrumentos select {
+      padding: 5px 10px;
+      border-radius: 6px;
+      border: 1.2px solid #b2ebf2;
+      background: #f9f9f9;
+      margin-top: 4px;
+      margin-bottom: 4px;
+      font-size: 1em;
+      transition: border 0.2s;
+    }
+    #utilidad select:focus, #instrumentos select:focus { border: 1.5px solid #0077b6; outline: none; }
 
-#preparacion-juego li {
-  background: #e0f7fa;
-  border-radius: 6px;
-  padding: 10px 12px;
-  margin: 8px 0;
-  cursor: move;
-  border: 1.5px solid #b2ebf2;
-  transition: background 0.2s, box-shadow 0.2s;
-  box-shadow: 0 1px 4px #e0e0e0;
-}
+    #instrumentos-juego-feedback, #preparacion-juego-feedback, #utilidad-juego-feedback {
+      font-size: 1.08em;
+      margin-top: 10px;
+      min-height: 24px;
+    }
+    #instrumentos .card-content ol { margin-bottom: 0; }
+    #instrumentos .card-content label { font-size: 1em; margin-right: 10px; }
+    #instrumentos .card-content > div[style*="display:flex"] { margin-bottom: 10px; }
 
-#preparacion-juego li:active {
-  background: #b2ebf2;
-}
+    @media (max-width: 700px) {
+      #instrumentos .card-content > div[style*="display:flex"] { flex-direction: column; gap: 0; }
+    }
 
-#preparacion-juego {
-  margin-bottom: 10px;
-}
+    /* --- NUEVOS ESTILOS PARA EL MANEJO DE SECCIONES Y REGISTRO --- */
+    .section {
+      display: none; /* Oculta todas las secciones por defecto */
+    }
+    .section.active {
+      display: block; /* Solo muestra la sección activa */
+    }
+    .nav.hidden {
+      display: none; /* Oculta el menú durante el registro */
+    }
 
-/* Selects y labels en minijuegos */
-#utilidad select,
-#instrumentos select {
-  padding: 5px 10px;
-  border-radius: 6px;
-  border: 1.2px solid #b2ebf2;
-  background: #f9f9f9;
-  margin-top: 4px;
-  margin-bottom: 4px;
-  font-size: 1em;
-  transition: border 0.2s;
-}
-
-#utilidad select:focus,
-#instrumentos select:focus {
-  border: 1.5px solid #0077b6;
-  outline: none;
-}
-
-#instrumentos-juego-feedback,
-#preparacion-juego-feedback,
-#utilidad-juego-feedback {
-  font-size: 1.08em;
-  margin-top: 10px;
-  min-height: 24px;
-}
-
-#instrumentos .card-content ol {
-  margin-bottom: 0;
-}
-
-#instrumentos .card-content label {
-  font-size: 1em;
-  margin-right: 10px;
-}
-
-#instrumentos .card-content > div[style*="display:flex"] {
-  margin-bottom: 10px;
-}
-
-@media (max-width: 700px) {
-  #instrumentos .card-content > div[style*="display:flex"] {
-    flex-direction: column;
-    gap: 0;
-  }
-}
+    /* Estilos del formulario de registro */
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #0077b6;
+    }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1.5px solid #b2ebf2;
+      border-radius: 6px;
+      font-size: 1em;
+      box-sizing: border-box;
+    }
+    .form-group input:focus, .form-group select:focus {
+      border-color: #0096c7;
+      outline: none;
+    }
   </style>
 </head>
 <body>
+
 <header>
   <h1>Rincón Activo</h1>
   <p><em>Aprender Jugando</em></p>
 </header>
 
-<nav class="nav">
+<nav class="nav hidden" id="main-nav">
   <button onclick="showSection('teorias')">Teorías de la Enseñanza y el Currículo</button>
   <button onclick="showSection('modelos')">Modelos de Enseñanza</button>
   <button onclick="showSection('preparacion')">Preparación de Clase</button>
@@ -140,10 +140,57 @@
 </nav>
 
 <div class="container">
-  <div id="bienvenida" class="section active">
+
+  <div id="registro" class="section active">
     <div class="card">
       <div class="card-content" style="text-align:center;">
-        <h2>¡Bienvenido a Rincón Activo!</h2>
+        <h2>Registro de Estudiante</h2>
+        <p style="margin-bottom: 20px; color: #555;">Por favor, ingresa tus datos para ingresar a la plataforma.</p>
+        
+        <form id="form-registro" 
+              action="https://docs.google.com/forms/d/e/1FAIpQLSco5umaj-GEqGGt50QpKjKjOmMwWpvZWaNrdMpR-dxQtBXS0w/formResponse" 
+              method="POST" 
+              target="iframe-oculto" 
+              onsubmit="registrarUsuario(event)">
+          
+          <div class="form-group">
+            <label for="nombre">Nombre Completo:</label>
+            <input type="text" id="nombre" name="entry.1992273444" required placeholder="Ej. Juan Pérez López">
+          </div>
+          
+          <div class="form-group" style="display: flex; gap: 15px;">
+            <div style="flex: 1;">
+              <label for="grado">Grado:</label>
+              <select id="grado" name="entry.358567303" required>
+                <option value="">Selecciona...</option>
+                <option value="1° grado">1°</option>
+                <option value="2° grado">2°</option>
+                <option value="3° grado">3°</option>
+                <option value="4° grado">4°</option>
+                <option value="5° grado">5°</option>
+                <option value="6° grado">6°</option>
+              </select>
+            </div>
+            <div style="flex: 1;">
+              <label for="grupo">Grupo:</label>
+              <input type="text" id="grupo" name="entry.1763487080" required placeholder="Ej. A, B, C" maxlength="2">
+            </div>
+          </div>
+          
+          <button type="submit" style="margin-top:18px; font-size:1.1em; background:#0096c7; color:#fff; border:none; border-radius:8px; padding:10px 28px; cursor:pointer; width: 100%; max-width: 400px;">
+            Ingresar
+          </button>
+        </form>
+
+        <iframe name="iframe-oculto" id="iframe-oculto" style="width:0; height:0; border:0; display:none;"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="bienvenida" class="section">
+    <div class="card">
+      <div class="card-content" style="text-align:center;">
+        <h2 id="saludo-personalizado">¡Bienvenido a Rincón Activo!</h2>
         <p style="font-size:1.15em; margin-bottom:18px;">
           Este espacio está diseñado para que aprendas sobre teorías, modelos y herramientas educativas de manera interactiva y divertida.<br>
           Explora cada sección, juega y pon a prueba tus conocimientos.
@@ -151,13 +198,11 @@
         <button onclick="showSection('teorias')" style="margin-top:18px; font-size:1.1em; background:#0096c7; color:#fff; border:none; border-radius:8px; padding:10px 28px; cursor:pointer;">
           ¡Comenzar!
         </button>
-        <!-- Imagen Foto al final de la bienvenida -->
-        <img src="Foto.jpg" style="max-width:220px; margin:28px auto 0; display:block; border-radius:14px; box-shadow:0 2px 12px #b2ebf2;">
       </div>
     </div>
   </div>
 
-  <div id="teorias" class="section active">
+  <div id="teorias" class="section">
     <div class="card">
       <div class="card-content">
         <h2>Teorías de la Enseñanza y el Currículo</h2>
@@ -197,7 +242,7 @@
             <img src="Margarita Pansza.jpg" alt="Margarita Pansza" class="autor-img">
             <p><strong>Margarita Pansza:</strong><br>Currículo por competencias.</p>
             <div class="autor-info">
-              <p>Margarita Pansza ha trabajado en el desarrollo e implementación del currículo por competencias, donde el aprendizaje se orienta a la adquisición de habilidades y capacidades prácticas, promoviendo la autonomía y la aplicación de conocimientos en contextos reales.</p>
+              <p>Margarita Pansza ha trabajado en el desarrollo e implementation del currículo por competencias, donde el aprendizaje se orienta a la adquisición de habilidades y capacidades prácticas, promoviendo la autonomía y la aplicación de conocimientos en contextos reales.</p>
             <div class="autor-video">
                 <video src="Margarita Pansza.mp4" controls width="180" height="100"></video>
               </div>
@@ -214,7 +259,6 @@
             </div>
           </div>
         </div>
-        <!-- Imagen de autores después de la lista de autores -->
         <img src="Autores.jpg" alt="Autores" style="max-width:320px; display:block; margin:18px auto 24px; border-radius:14px; box-shadow:0 2px 12px #b2ebf2;">
       </div>
     </div>
@@ -294,7 +338,7 @@
         <div style="margin-top:24px; background:#e0f7fa; border-radius:8px; padding:16px;">
           <strong>¿Sabías que...?</strong><br>
           <span style="font-size:1rem;">
-            Los modelos de enseñanza no son excluyentes: en la práctica, los docentes suelen combinar elementos de varios modelos para responder a las características y necesidades de sus estudiantes.
+            Los modelos de enseñanza no son excluyentes: en la práctica, los docentes suelen combinar elements de varios modelos para responder a las características y necesidades de sus estudiantes.
           </span>
         </div>
       </div>
@@ -334,18 +378,18 @@
             <b>Ejemplo:</b> Si el propósito es que los alumnos comprendan el ciclo del agua, el docente organiza materiales visuales y experimentos, realiza actividades grupales para observar el fenómeno, retroalimenta con preguntas y orienta a los estudiantes para que relacionen el tema con situaciones cotidianas.
           </span>
         </div>
-        <!-- Minijuego: Ordena los pasos de la preparación de clase -->
+        
         <div style="margin-top:22px; background:#fffbe7; border-radius:8px; padding:14px;">
           <strong>Minijuego: Ordena los pasos de la preparación de clase</strong>
           <p>Arrastra y suelta los pasos en el orden correcto:</p>
           <ul id="preparacion-juego" style="list-style:none; padding:0; margin:0;">
-            <li draggable="true" style="margin:6px 0; background:#e0f7fa; border-radius:6px; padding:8px; cursor:move;">Seleccionar contenidos</li>
-            <li draggable="true" style="margin:6px 0; background:#e0f7fa; border-radius:6px; padding:8px; cursor:move;">Diseñar actividades</li>
-            <li draggable="true" style="margin:6px 0; background:#e0f7fa; border-radius:6px; padding:8px; cursor:move;">Definir objetivos</li>
-            <li draggable="true" style="margin:6px 0; background:#e0f7fa; border-radius:6px; padding:8px; cursor:move;">Elegir recursos</li>
-            <li draggable="true" style="margin:6px 0; background:#e0f7fa; border-radius:6px; padding:8px; cursor:move;">Prever la evaluación</li>
+            <li draggable="true" id="step1">Seleccionar contenidos</li>
+            <li draggable="true" id="step2">Diseñar actividades</li>
+            <li draggable="true" id="step3">Definir objetivos</li>
+            <li draggable="true" id="step4">Elegir recursos</li>
+            <li draggable="true" id="step5">Prever la evaluación</li>
           </ul>
-          <button onclick="verificarPreparacionJuego()" style="margin-top:10px;">Verificar</button>
+          <button type="button" onclick="verificarPreparacionJuego()" style="margin-top:10px; background:#0096c7; color:#fff; border:none; border-radius:6px; padding:6px 16px; cursor:pointer;">Verificar</button>
           <div id="preparacion-juego-feedback" style="margin-top:8px; font-weight:bold;"></div>
         </div>
       </div>
@@ -364,10 +408,9 @@
             <a href="INFOGRAFIA.pdf" target="_blank" style="color:#0077b6; text-decoration:underline;">Ver o descargar infografía en PDF</a>
           </div>
         </div>
-        <!-- Infografía 2 agregada aquí -->
         <div style="margin-top:22px; background:#f1faff; border-radius:8px; padding:12px;">
           <strong>Infografía 2:</strong> Estrategias de Intervención<br>
-          <iframe src="Infografia 2.pdf" width="100%" height="85vh" style="border:none; border-radius:8px; margin-top:10px; min-height:500px;"></iframe>
+          <iframe src="Infografia_2.pdf" width="100%" height="85vh" style="border:none; border-radius:8px; margin-top:10px; min-height:500px;"></iframe>
           <div style="text-align:center; margin-top:8px;">
             <a href="Infografia_2.pdf" target="_blank" style="color:#0077b6; text-decoration:underline;">Ver o descargar infografía 2 en PDF</a>
           </div>
@@ -385,12 +428,12 @@
         </p>
         <p>
           Es fundamental distinguir entre <strong>evaluación</strong>, <strong>medición</strong> y <strong>calificación</strong>:
-          <ul>
-            <li><strong>Evaluación:</strong> Proceso integral que implica recolectar, analizar y reflexionar sobre información para mejorar el aprendizaje y la enseñanza.</li>
-            <li><strong>Medición:</strong> Asignación de valores numéricos o cualitativos a los aprendizajes observados, generalmente a través de pruebas o instrumentos.</li>
-            <li><strong>Calificación:</strong> Expresión final del resultado de la evaluación, usualmente en forma de número, letra o concepto.</li>
-          </ul>
         </p>
+        <ul>
+          <li><strong>Evaluación:</strong> Proceso integral que implica recolectar, analizar y reflexionar sobre información para mejorar el aprendizaje y la enseñanza.</li>
+          <li><strong>Medición:</strong> Asignación de valores numéricos o cualitativos a los aprendizajes observados, generalmente a través de pruebas o instrumentos.</li>
+          <li><strong>Calificación:</strong> Expresión final del resultado de la evaluación, usualmente en forma de número, letra o concepto.</li>
+        </ul>
         <p>
           La evaluación cumple funciones <strong>diagnóstica</strong> (antes de iniciar un proceso), <strong>formativa</strong> (durante el proceso, para retroalimentar y ajustar) y <strong>sumativa</strong> (al final, para certificar aprendizajes). Además, puede ser <strong>auto</strong>, <strong>coevaluación</strong> o <strong>heteroevaluación</strong> según quién la realice.
         </p>
@@ -404,9 +447,9 @@
           <strong>Importante:</strong> Evaluar no solo es calificar, sino también retroalimentar y orientar a los estudiantes para que mejoren. La evaluación debe ser justa, transparente y centrada en el aprendizaje.
         </div>
         <div style="margin-top:14px; background:#e0f7fa; border-radius:8px; padding:12px;">
-          <strong>Ejemplo:</strong> Al finalizar un proyecto, el docente puede aplicar una rúbrica, pedir a los estudiantes que se autoevalúen y organizar una retroalimentación grupal para identificar logros y áreas de mejora.
+          <strong>Ejemplo práctico:</strong> Al finalizar un proyecto, el docente puede aplicar una rúbrica, pedir a los estudiantes que se autoevalúen y organizar una retroalimentación grupal para identificar logros y áreas de mejora.
         </div>
-        <!-- Minijuego: ¿Qué tipo de evaluación es? -->
+        
         <div style="margin-top:22px; background:#fffbe7; border-radius:8px; padding:14px;">
           <strong>Minijuego: ¿Qué tipo de evaluación es?</strong>
           <p>Selecciona el tipo de evaluación según el ejemplo:</p>
@@ -437,7 +480,7 @@
               <option value="sumativa">Sumativa</option>
             </select>
           </div>
-          <button onclick="verificarUtilidadJuego()" style="margin-top:10px;">Verificar</button>
+          <button type="button" onclick="verificarUtilidadJuego()" style="margin-top:10px; background:#0096c7; color:#fff; border:none; border-radius:6px; padding:6px 16px; cursor:pointer;">Verificar</button>
           <div id="utilidad-juego-feedback" style="margin-top:8px; font-weight:bold;"></div>
         </div>
       </div>
@@ -461,127 +504,98 @@
           <li><strong>Rúbricas:</strong> Facilitan la evaluación objetiva y transparente de tareas complejas.</li>
           <li><strong>Observación directa:</strong> El docente registra comportamientos, habilidades y actitudes en el contexto natural.</li>
         </ul>
-        <p>
-          La selección del instrumento debe responder al propósito de la evaluación y a las competencias que se desean valorar. Además, es recomendable informar a los estudiantes sobre los criterios e instrumentos que se usarán para que comprendan cómo serán evaluados.
-        </p>
         <ul>
           <li><strong>Rúbricas:</strong> Tablas con criterios y niveles de desempeño para valorar trabajos, proyectos o presentaciones. Facilitan la retroalimentación clara y objetiva.</li>
           <li><strong>Listas de cotejo:</strong> Listados de aspectos a observar o verificar en una tarea o actividad. Son útiles para comprobar si se cumplen ciertos pasos o requisitos.</li>
           <li><strong>Escalas de valoración:</strong> Permiten calificar el grado de cumplimiento de ciertos criterios (por ejemplo: siempre, a veces, nunca).</li>
           <li><strong>Exámenes:</strong> Pruebas escritas u orales para comprobar conocimientos o habilidades. Pueden ser de opción múltiple, preguntas abiertas, resolución de problemas, etc.</li>
           <li><strong>Portafolios:</strong> Colección de trabajos del estudiante que evidencian su progreso a lo largo del tiempo. Permiten una visión integral del aprendizaje.</li>
-          <li><strong>Observación:</strong> Registro sistemático de comportamientos, actitudes o habilidades en situaciones reales. Puede apoyarse en notas de campo o registros anecdóticos.</li>
-          <li><strong>Proyectos y presentaciones:</strong> Permiten evaluar la aplicación de conocimientos en situaciones reales y el desarrollo de habilidades como la comunicación y el trabajo en equipo.</li>
-          <li><strong>Diarios y reflexiones:</strong> Espacios donde los estudiantes expresan sus aprendizajes, dudas y avances, favoreciendo la metacognición.</li>
         </ul>
-        <div style="margin-top:16px; background:#f1faff; border-radius:8px; padding:12px;">
-          <strong>Tip:</strong> Utilizar diferentes instrumentos permite obtener una visión más completa y justa del aprendizaje de cada estudiante. Es recomendable informar a los estudiantes sobre los criterios e instrumentos que se usarán.
-        </div>
-        <div style="margin-top:14px; background:#e0f7fa; border-radius:8px; padding:12px;">
-          <strong>Ejemplo:</strong> Para evaluar una exposición oral, el docente puede usar una rúbrica, pedir una autoevaluación y complementar con observaciones sobre la participación y el dominio del tema.
-        </div>
-        <!-- Minijuego: Relaciona el instrumento con su descripción -->
-        <div style="margin-top:22px; background:#fffbe7; border-radius:8px; padding:14px;">
-          <strong>Minijuego: Relaciona el instrumento con su descripción</strong>
-          <div style="display:flex; flex-wrap:wrap; gap:16px;">
-            <div>
-              <b>Instrumento</b>
-              <ol id="instrumentos-lista" style="padding-left:18px;">
-                <li>Rúbrica</li>
-                <li>Lista de cotejo</li>
-                <li>Portafolio</li>
-              </ol>
-            </div>
-            <div>
-              <b>Descripción</b>
-              <ol type="A" style="padding-left:18px;">
-                <li id="descA">Colección de trabajos del estudiante que evidencian su progreso.</li>
-                <li id="descB">Tabla con criterios y niveles de desempeño para valorar trabajos.</li>
-                <li id="descC">Listado de aspectos a observar o verificar en una tarea.</li>
-              </ol>
-            </div>
-          </div>
-          <div style="margin-top:10px;">
-            <label>Rúbrica = 
-              <select id="rel1">
-                <option value="">Selecciona...</option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-              </select>
-            </label>
-            <label style="margin-left:12px;">Lista de cotejo = 
-              <select id="rel2">
-                <option value="">Selecciona...</option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-              </select>
-            </label>
-            <label style="margin-left:12px;">Portafolio = 
-              <select id="rel3">
-                <option value="">Selecciona...</option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-              </select>
-            </label>
-          </div>
-          <button onclick="verificarInstrumentosJuego()" style="margin-top:10px;">Verificar</button>
-          <div id="instrumentos-juego-feedback" style="margin-top:8px; font-weight:bold;"></div>
-        </div>
       </div>
     </div>
   </div>
 
 </div>
 
-<footer>
-  &copy; 2025 Rincón Activo
-</footer>
-
 <script>
-  function showSection(id) {
-    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
+  // Manejo de pantallas y navegación
+  function registrarUsuario(event) {
+    const nombreAlumno = document.getElementById('nombre').value;
+    document.getElementById('saludo-personalizado').innerText = `¡Bienvenido a Rincón Activo, ${nombreAlumno}!`;
+    
+    // Mostrar la barra de navegación quitando la clase que la oculta
+    document.getElementById('main-nav').classList.remove('hidden');
+    
+    // Delay estratégico para que el formulario viaje al iframe oculto antes del cambio visual
+    setTimeout(() => {
+      showSection('bienvenida');
+    }, 250);
+  }
+
+  function showSection(sectionId) {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(sec => sec.classList.remove('active'));
+    
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+      targetSection.classList.add('active');
+    }
+    // Desplazar la pantalla arriba automáticamente al cambiar de sección
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function toggleInfo(element) {
     const info = element.querySelector('.autor-info');
-    info.style.display = info.style.display === 'block' ? 'none' : 'block';
+    if (info) {
+      info.style.display = (info.style.display === 'block') ? 'none' : 'block';
+    }
   }
 
-  // --- Juego de Arrastrar y Soltar (Preparación de Clase) ---
+  // --- LÓGICA DE MINIJUEGO: PREPARACIÓN DE CLASE (Arrastrar y Soltar) ---
   const listaJuego = document.getElementById('preparacion-juego');
+  let dragSrcEl = null;
+
+  function handleDragStart(e) {
+    dragSrcEl = this;
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/html', this.innerHTML);
+    e.dataTransfer.setData('text/plain', this.id);
+  }
+
+  function handleDragOver(e) {
+    if (e.preventDefault) e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    return false;
+  }
+
+  function handleDrop(e) {
+    if (e.stopPropagation) e.stopPropagation();
+    
+    if (dragSrcEl !== this) {
+      const srcId = e.dataTransfer.getData('text/plain');
+      const targetId = this.id;
+      
+      // Intercambiar HTML e IDs para mantener rastreable el orden real
+      dragSrcEl.innerHTML = this.innerHTML;
+      dragSrcEl.id = targetId;
+      
+      this.innerHTML = e.dataTransfer.getData('text/html');
+      this.id = srcId;
+    }
+    return false;
+  }
+
   if (listaJuego) {
-    let dragSrcEl = null;
     listaJuego.querySelectorAll('li').forEach(item => {
-      item.addEventListener('dragstart', function (e) {
-        dragSrcEl = this;
-        e.dataTransfer.effectAllowed = 'move';
-      });
-      item.addEventListener('dragover', function (e) {
-        e.preventDefault();
-        this.style.background = '#b2ebf2';
-      });
-      item.addEventListener('dragleave', function () {
-        this.style.background = '#e0f7fa';
-      });
-      item.addEventListener('drop', function (e) {
-        e.preventDefault();
-        if (dragSrcEl !== this) {
-          let temp = this.innerHTML;
-          this.innerHTML = dragSrcEl.innerHTML;
-          dragSrcEl.innerHTML = temp;
-        }
-        this.style.background = '#e0f7fa';
-      });
-      item.addEventListener('dragend', function () {
-        listaJuego.querySelectorAll('li').forEach(li => li.style.background = '#e0f7fa');
-      });
+      item.addEventListener('dragstart', handleDragStart, false);
+      item.addEventListener('dragover', handleDragOver, false);
+      item.addEventListener('drop', handleDrop, false);
     });
   }
-  window.verificarPreparacionJuego = function () {
+
+  function verificarPreparacionJuego() {
+    const items = document.querySelectorAll('#preparacion-juego li');
+    // El orden correcto esperado basado en el texto conceptual
     const ordenCorrecto = [
       "Definir objetivos",
       "Seleccionar contenidos",
@@ -589,41 +603,41 @@
       "Elegir recursos",
       "Prever la evaluación"
     ];
-    const items = Array.from(document.querySelectorAll('#preparacion-juego li')).map(li => li.textContent.trim());
-    const correcto = ordenCorrecto.every((txt, i) => txt === items[i]);
-    const feedback = document.getElementById('preparacion-juego-feedback');
-    feedback.textContent = correcto ? "¡Correcto! Has ordenado bien los pasos." : "Revisa el orden e inténtalo de nuevo.";
-    feedback.style.color = correcto ? "#009900" : "#c70039";
-  };
+    
+    let aciertos = 0;
+    items.forEach((item, index) => {
+      if (item.innerText.trim() === ordenCorrecto[index]) {
+        aciertos++;
+      }
+    });
 
-  // --- Juego de Selección Múltiple (Utilidad de la Evaluación) ---
-  window.verificarUtilidadJuego = function () {
+    const feedback = document.getElementById('preparacion-juego-feedback');
+    if (aciertos === ordenCorrecto.length) {
+      feedback.style.color = "green";
+      feedback.innerText = "¡Excelente! Has ordenado todos los pasos de manera correcta. 🎉";
+    } else {
+      feedback.style.color = "red";
+      feedback.innerText = `Tienes algunos pasos fuera de lugar (${aciertos}/${ordenCorrecto.length} correctos). ¡Inténtalo de nuevo!`;
+    }
+  }
+
+  // --- LÓGICA DE MINIJUEGO: UTILIDAD DE EVALUACIÓN ---
+  function verificarUtilidadJuego() {
     const r1 = document.getElementById('eval1').value;
     const r2 = document.getElementById('eval2').value;
     const r3 = document.getElementById('eval3').value;
-    const correcto = r1 === "diagnostica" && r2 === "formativa" && r3 === "sumativa";
+    
     const feedback = document.getElementById('utilidad-juego-feedback');
-    feedback.textContent = correcto ? "¡Muy bien! Todas las respuestas son correctas." : "Hay respuestas incorrectas. Intenta de nuevo.";
-    feedback.style.color = correcto ? "#009900" : "#c70039";
-  };
-
-  // --- Juego de Relacionar (Instrumentos de Evaluación) ---
-  window.verificarInstrumentosJuego = function () {
-    const rel1 = document.getElementById('rel1').value;
-    const rel2 = document.getElementById('rel2').value;
-    const rel3 = document.getElementById('rel3').value;
-    const correcto = rel1 === "B" && rel2 === "C" && rel3 === "A";
-    const feedback = document.getElementById('instrumentos-juego-feedback');
-    feedback.textContent = correcto ? "¡Correcto! Has relacionado bien los instrumentos." : "Revisa las relaciones e inténtalo de nuevo.";
-    feedback.style.color = correcto ? "#009900" : "#c70039";
-  };
-
-  // Al cargar, muestra solo la bienvenida
-  window.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-    var bienvenida = document.getElementById('bienvenida');
-    if (bienvenida) bienvenida.classList.add('active');
-  });
+    
+    if (r1 === 'diagnostica' && r2 === 'formativa' && r3 === 'sumativa') {
+      feedback.style.color = "green";
+      feedback.innerText = "¡Perfecto! Identificaste correctamente cada tipo de evaluación en su escenario correspondiente. 🎯";
+    } else {
+      feedback.style.color = "red";
+      feedback.innerText = "Algunas opciones no coinciden con la definición del ejemplo. Revisa las respuestas seleccionadas.";
+    }
+  }
 </script>
+
 </body>
 </html>
