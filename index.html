@@ -121,6 +121,22 @@
       border-color: #0096c7;
       outline: none;
     }
+
+    /* Estilos para el video de bienvenida */
+    .bienvenida-video-container {
+      margin: 20px auto;
+      max-width: 560px;
+      background: #f1faff;
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .bienvenida-video-container video {
+      width: 100%;
+      height: 600px;
+      border-radius: 8px;
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -195,6 +211,12 @@
           Este espacio está diseñado para que aprendas sobre teorías, modelos y herramientas educativas de manera interactiva y divertida.<br>
           Explora cada sección, juega y pon a prueba tus conocimientos.
         </p>
+
+        <!-- SECCIÓN DEL VIDEO DE BIENVENIDA -->
+        <div class="bienvenida-video-container">
+          <video src="VIDEO_BIENVENIDA.mp4" controls></video>
+        </div>
+
         <button onclick="showSection('teorias')" style="margin-top:18px; font-size:1.1em; background:#0096c7; color:#fff; border:none; border-radius:8px; padding:10px 28px; cursor:pointer;">
           ¡Comenzar!
         </button>
@@ -242,7 +264,7 @@
             <img src="Margarita Pansza.jpg" alt="Margarita Pansza" class="autor-img">
             <p><strong>Margarita Pansza:</strong><br>Currículo por competencias.</p>
             <div class="autor-info">
-              <p>Margarita Pansza ha trabajado en el desarrollo e implementation del currículo por competencias, donde el aprendizaje se orienta a la adquisición de habilidades y capacidades prácticas, promoviendo la autonomía y la aplicación de conocimientos en contextos reales.</p>
+              <p>Margarita Pansza ha trabajado en el desarrollo e implementation del currículo por competencias, donde el aprendizaje se orienta a la adquisición de habilidades and capacidades prácticas, promoviendo la autonomía y la aplicación de conocimientos en contextos reales.</p>
             <div class="autor-video">
                 <video src="Margarita Pansza.mp4" controls width="180" height="100"></video>
               </div>
@@ -637,6 +659,7 @@
       feedback.innerText = "Algunas opciones no coinciden con la definición del ejemplo. Revisa las respuestas seleccionadas.";
     }
   }
+
 </script>
 
 </body>
