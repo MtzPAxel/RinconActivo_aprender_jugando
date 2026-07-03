@@ -137,6 +137,101 @@
       border-radius: 8px;
       display: block;
     }
+
+    /* --- ESTILOS AGREGADOS PARA EL CALENDARIO (IMG-20260701-WA0013.jpg) --- */
+    .calendar-header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .calendar-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #333;
+      margin: 0;
+    }
+    .calendar-notes {
+      border: 1px solid #999;
+      padding: 10px;
+      min-width: 280px;
+      max-width: 350px;
+      text-align: left;
+      background: #fff;
+    }
+    .calendar-notes label {
+      font-size: 0.8em;
+      color: #888;
+      display: block;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 4px;
+      margin-bottom: 5px;
+      letter-spacing: 0.5px;
+    }
+    .calendar-notes p {
+      margin: 5px 0 0 0;
+      font-size: 0.9em;
+      color: #555;
+      min-height: 30px;
+    }
+    .calendar-table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+    }
+    .calendar-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      font-family: sans-serif;
+    }
+    .calendar-table th, .calendar-table td {
+      border: 1px solid #ccc;
+      width: 12.5%;
+      min-width: 80px;
+      box-sizing: border-box;
+    }
+    .calendar-table th {
+      background: #f9f9f9;
+      padding: 10px 5px;
+      font-size: 0.9em;
+      font-weight: normal;
+      color: #666;
+      text-align: center;
+    }
+    .calendar-table td {
+      height: 90px;
+      vertical-align: top;
+      padding: 6px;
+      position: relative;
+    }
+    .calendar-table .week-col {
+      background: #f2f2f2;
+      text-align: center;
+      vertical-align: middle;
+      font-weight: bold;
+      color: #555;
+    }
+    .calendar-table .day-num {
+      display: block;
+      text-align: right;
+      font-weight: bold;
+      color: #333;
+      font-size: 0.95em;
+    }
+    .calendar-table .highlight-sat {
+      background: #ffe066;
+    }
+    .calendar-table .class-date-label {
+      display: block;
+      margin-top: 15px;
+      font-size: 0.75em;
+      font-weight: bold;
+      color: #444;
+      text-align: center;
+      letter-spacing: 0.2px;
+    }
   </style>
 </head>
 <body>
@@ -149,6 +244,7 @@
 <nav class="nav hidden" id="main-nav">
   <button onclick="showSection('teorias')">Teorías de la Enseñanza y el Currículo</button>
   <button onclick="showSection('modelos')">Modelos de Enseñanza</button>
+  <button onclick="showSection('calendario')">Calendario de Clases</button>
   <button onclick="showSection('preparacion')">Preparación de Clase</button>
   <button onclick="showSection('intervencion')">Intervención Educativa</button>
   <button onclick="showSection('utilidad')">Utilidad de la Evaluación</button>
@@ -224,10 +320,107 @@
     </div>
   </div>
 
+  <!-- SECCIÓN: CALENDARIO DE CLASES -->
+  <div id="calendario" class="section">
+    <div class="card">
+      <div class="card-content">
+        <div class="calendar-header-container">
+          <h2 class="calendar-title">Junio- Julio 2026</h2>
+          <div class="calendar-notes">
+            <label>NOTAS: — CALENDARIO DE CLASES JUNIO - JULIO —</label>
+            <p></p>
+          </div>
+        </div>
+
+        <div class="calendar-table-wrapper">
+          <table class="calendar-table">
+            <thead>
+              <tr>
+                <th style="font-size:0.75em; text-transform: uppercase;">Semana</th>
+                <th>Lunes</th>
+                <th>Martes</th>
+                <th>Miércoles</th>
+                <th>Jueves</th>
+                <th>Viernes</th>
+                <th>Sábado</th>
+                <th>Domingo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="week-col">23</td>
+                <td><span class="day-num">01</span></td>
+                <td><span class="day-num">02</span></td>
+                <td><span class="day-num">03</span></td>
+                <td><span class="day-num">04</span></td>
+                <td><span class="day-num">05</span></td>
+                <td><span class="day-num">06</span></td>
+                <td><span class="day-num">07</span></td>
+              </tr>
+              <tr>
+                <td class="week-col">24</td>
+                <td><span class="day-num">08</span></td>
+                <td><span class="day-num">09</span></td>
+                <td><span class="day-num">10</span></td>
+                <td><span class="day-num">11</span></td>
+                <td><span class="day-num">12</span></td>
+                <td class="highlight-sat"><span class="day-num">13</span></td>
+                <td><span class="day-num">14</span></td>
+              </tr>
+              <tr>
+                <td class="week-col">25</td>
+                <td><span class="day-num">15</span></td>
+                <td><span class="day-num">16</span></td>
+                <td><span class="day-num">17</span></td>
+                <td><span class="day-num">18</span></td>
+                <td><span class="day-num">19</span></td>
+                <td class="highlight-sat"><span class="day-num">20</span></td>
+                <td><span class="day-num">21</span></td>
+              </tr>
+              <tr>
+                <td class="week-col">26</td>
+                <td><span class="day-num">22</span></td>
+                <td><span class="day-num">23</span></td>
+                <td><span class="day-num">24</span></td>
+                <td><span class="day-num">25</span></td>
+                <td><span class="day-num">26</span></td>
+                <td class="highlight-sat"><span class="day-num">27</span></td>
+                <td><span class="day-num">28</span></td>
+              </tr>
+              <tr>
+                <td class="week-col">27</td>
+                <td><span class="day-num">29</span></td>
+                <td><span class="day-num">30</span></td>
+                <td><span class="day-num">01</span></td>
+                <td><span class="day-num">02</span></td>
+                <td><span class="day-num">03</span></td>
+                <td class="highlight-sat">
+                  <span class="day-num">04</span>
+                  <span class="class-date-label">FECHA DE CLASE</span>
+                </td>
+                <td><span class="day-num">05</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="teorias" class="section">
     <div class="card">
       <div class="card-content">
         <h2>Teorías de la Enseñanza y el Currículo</h2>
+        
+        <!-- APARTADO MOVIDO: AHORA ESTÁ ARRIBA DE LOS AUTORES -->
+        <div style="margin-top:14px; margin-bottom:28px; background:#f9f9f9; border-radius:10px; padding:18px; border: 1.5px dashed #0096c7;">
+          <h3 style="color:#0077b6; margin-top:0; margin-bottom:12px;">¿Qué es la enseñanza?</h3>
+          <div style="background:#f1faff; border-radius:8px; padding:12px; max-width:450px; margin: 0 auto;">
+            <!-- Puedes reemplazar "RUTA_DE_TU_VIDEO_ENSENANZA.mp4" con el archivo real de tu video -->
+            <video src="La enseñanza.mp4" controls width="100%" style="border-radius:6px; display:block; min-height:200px; background:#000;"></video>
+          </div>
+        </div>
+
         <div class="autor-row">
           <div class="autor-box" onclick="toggleInfo(this)">
             <img src="Ralph Tyler.jpg" alt="Ralph Tyler" class="autor-img">
@@ -272,7 +465,7 @@
           </div>
           <div class="autor-box" onclick="toggleInfo(this)">
             <img src="R y Maria.png" alt="Raquel Glazman y María de Ibarrola" class="autor-img">
-            <p><strong>Raquel Glazman y María de Ibarrola:</strong><br>Modelo basado en investigación y adecuación al contexto.</p>
+            <p><strong>Raquel Glazman y María de Ibarrola:</strong><br>Modelo basado en investigación and adecuación al contexto.</p>
             <div class="autor-info">
               <p>Raquel Glazman y María de Ibarrola son investigadoras mexicanas que han aportado al análisis y desarrollo curricular desde una perspectiva investigativa, enfatizando la importancia de adaptar el currículo a las necesidades y realidades de cada contexto educativo.</p>
             <div class="autor-video">
@@ -282,6 +475,7 @@
           </div>
         </div>
         <img src="Autores.jpg" alt="Autores" style="max-width:320px; display:block; margin:18px auto 24px; border-radius:14px; box-shadow:0 2px 12px #b2ebf2;">
+
       </div>
     </div>
   </div>
@@ -341,7 +535,7 @@
           <li style="margin-bottom: 18px;">
             <span style="font-weight:bold; color:#0077b6;">Modelo por competencias:</span><br>
             <span style="margin-left: 10px;">
-              Se centra en el desarrollo de habilidades y capacidades específicas que son relevantes para el desempeño en la vida profesional y personal. Los estudiantes son evaluados en función de su capacidad para aplicar los conocimientos y habilidades adquiridas en situaciones reales.<br>
+              Se centra en el desarrollo de habilidades y capacidades específicas que son relevantes para el desempeño en la vida profesional and personal. Los estudiantes son evaluados en función de su capacidad para aplicar los conocimientos y habilidades adquiridas en situaciones reales.<br>
               <span style="color:#222;"><strong>Ejemplo:</strong> Los alumnos realizan una práctica profesional o resuelven casos reales donde demuestran lo aprendido.</span>
               <div style="margin-top:10px; background:#f1faff; border-radius:8px; padding:8px; width:210px;">
                 <video src="por competencias.mp4" controls width="190" height="110"></video>
@@ -363,6 +557,15 @@
             Los modelos de enseñanza no son excluyentes: en la práctica, los docentes suelen combinar elements de varios modelos para responder a las características y necesidades de sus estudiantes.
           </span>
         </div>
+
+        <!-- APARTADO AL FINAL DE LA PÁGINA PARA EL VIDEO -->
+        <div style="margin-top:28px; background:#f9f9f9; border-radius:10px; padding:18px; border: 1.5px dashed #0096c7;">
+          <h3 style="color:#0077b6; margin-top:0; margin-bottom:12px;">Otros modelos de enseñanza...</h3>
+          <div style="background:#f1faff; border-radius:8px; padding:12px; max-width:450px; margin: 0 auto;">
+            <video src="Otros modelos.mp4" controls width="100%" style="border-radius:6px; display:block; min-height:200px; background:#000кой;"></video>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -446,7 +649,7 @@
       <div class="card-content">
         <h2>Utilidad de la Evaluación</h2>
         <p>
-          La <strong>evaluación</strong> es un proceso sistemático y continuo que permite obtener información relevante sobre el aprendizaje de los estudiantes y la eficacia de la enseñanza. Su utilidad va mucho más allá de asignar una calificación: ayuda a identificar avances, dificultades, necesidades y potencialidades, tanto de los alumnos como de la práctica docente.
+          La <strong>evaluación</strong> es un proceso sistemático y continuo que permite obtener información relevante sobre el aprendizaje de los estudiantes and la eficacia de la enseñanza. Su utilidad va mucho más allá de asignar una calificación: ayuda a identificar avances, dificultades, necesidades y potencialidades, tanto de los alumnos como de la práctica docente.
         </p>
         <p>
           Es fundamental distinguir entre <strong>evaluación</strong>, <strong>medición</strong> y <strong>calificación</strong>:
@@ -523,7 +726,7 @@
           <li><strong>Proyectos:</strong> Permiten a los estudiantes aplicar conocimientos en la resolución de problemas reales.</li>
           <li><strong>Estudios de caso:</strong> Analizan situaciones concretas para proponer soluciones fundamentadas.</li>
           <li><strong>Portafolios:</strong> Recopilan evidencias del aprendizaje a lo largo del tiempo.</li>
-          <li><strong>Rúbricas:</strong> Facilitan la evaluación objetiva y transparente de tareas complejas.</li>
+          <li><strong>Rúbricas:</strong> Facilitan la evaluación客观 y transparente de tareas complejas.</li>
           <li><strong>Observación directa:</strong> El docente registra comportamientos, habilidades y actitudes en el contexto natural.</li>
         </ul>
         <ul>
@@ -617,7 +820,6 @@
 
   function verificarPreparacionJuego() {
     const items = document.querySelectorAll('#preparacion-juego li');
-    // El orden correcto esperado basado en el texto conceptual
     const ordenCorrecto = [
       "Definir objetivos",
       "Seleccionar contenidos",
