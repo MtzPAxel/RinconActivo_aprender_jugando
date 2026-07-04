@@ -122,8 +122,8 @@
       outline: none;
     }
 
-    /* Estilos para el video de bienvenida */
-    .bienvenida-video-container {
+    /* Estilos para el video de bienvenida y desarrollo */
+    .bienvenida-video-container, .desarrollo-video-container {
       margin: 20px auto;
       max-width: 560px;
       background: #f1faff;
@@ -131,9 +131,10 @@
       padding: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
-    .bienvenida-video-container video {
+    .bienvenida-video-container video, .desarrollo-video-container video {
       width: 100%;
-      height: 600px;
+      height: auto;
+      max-height: 600px;
       border-radius: 8px;
       display: block;
     }
@@ -251,6 +252,7 @@
   <button onclick="showSection('utilidad')">Utilidad de la Evaluación</button>
   <button onclick="showSection('instrumentos')">Instrumentos de Evaluación</button>
   <button onclick="showSection('rubrica')">Rúbrica de Evaluación</button>
+  <button onclick="showSection('acerca')">Acerca de...</button>
 </nav>
 
 <div class="container">
@@ -586,7 +588,7 @@
           <li><strong>Organizar el tiempo:</strong> Distribuir las actividades y los momentos de la clase para aprovechar al máximo el tiempo disponible.</li>
         </ul>
         <div style="margin-top:16px; background:#f1faff; border-radius:8px; padding:12px;">
-          <strong>Consejo:</strong> Una clase bien preparada favorece la participación, la motivación y el logro de los aprendizajes esperados. Recuerda siempre tener un plan B por si surge algún imprevisto.
+          <strong>Consejo:</strong> Una clase bien preparada favorece la participación, la motivación y el logro de los aprendizajes esperados. Recuerda siempre tener un plan B por si surge algún imprevinto.
         </div>
         <div style="margin-top:14px; background:#e0f7fa; border-radius:8px; padding:12px;">
           <strong>Ejemplo práctico:</strong><br>
@@ -655,7 +657,7 @@
         <!-- Recuadro con el Código de la Clase -->
         <div style="margin-bottom: 25px;">
           <p style="background: #fffbe7; padding: 12px 20px; border-radius: 8px; border: 1.5px solid #ffe082; display: inline-block; margin: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
-            <strong>Código de acceso a la clase:</strong> <code style="font-size: 1.25em; color: #b8860b; font-family: monospace; font-weight: bold; margin-left: 5px;">bs4emgbp</code>
+            <strong>Código de acceso a la clase:</strong> <code style="font-size: 1.25em; color: #b8860b; font-family: monospace; font-weight: bold; margin-left: 5px;">biz6oucz</code>
           </p>
         </div>
 
@@ -663,7 +665,7 @@
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 10px;">
           
           <!-- Botón Classroom -->
-          <a href="https://classroom.google.com/c/ODY5MDM0NjMzMDly" target="_blank" style="display: inline-block; background: #0096c7; color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-size: 1.1em; font-weight: bold; box-shadow: 0 4px 10px rgba(0,150,199,0.25); transition: background 0.2s;">
+          <a href="https://classroom.google.com/c/ODU1NDI4NDA4MTcx" target="_blank" style="display: inline-block; background: #0096c7; color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-size: 1.1em; font-weight: bold; box-shadow: 0 4px 10px rgba(0,150,199,0.25); transition: background 0.2s;">
             Abrir Classroom 🚀
           </a>
 
@@ -849,6 +851,33 @@
           </div>
         </div>
 
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN NUEVA: ACERCA DE... (DESARROLLO DE LA PÁGINA) -->
+  <div id="acerca" class="section">
+    <div class="card">
+      <div class="card-content" style="text-align:center; padding: 30px 20px;">
+        <h2>Acerca del Desarrollo de la Plataforma</h2>
+        <p style="font-size:1.1em; max-width:650px; margin:0 auto 20px; color:#555; line-height:1.6;">
+          ¿Te interesa saber cómo se construyó este entorno interactivo? Aquí te explicamos detalladamente el proceso de diseño, la estructura lógica de los minijuegos y la integración multimedia detrás de <strong>Rincón Activo</strong>.
+        </p>
+
+        <!-- CONTENEDOR DEL VIDEO DE DESARROLLO -->
+        <div class="desarrollo-video-container">
+          <video src="Acerca.mp4" controls></video>
+        </div>
+
+        <div style="margin-top:24px; text-align:left; max-width:600px; margin-left:auto; margin-right:auto; background:#f9f9f9; padding:20px; border-radius:8px; border:1px solid #b2ebf2;">
+          <h3 style="color:#0077b6; margin-top:0;">Tecnologías Utilizadas:</h3>
+          <ul style="padding-left:20px; line-height:1.5; color:#444;">
+            <li><strong>HTML5:</strong> Estructura semántica integrada en una arquitectura SPA (Single Page Application).</li>
+            <li><strong>CSS3:</strong> Estilos adaptativos (Responsive Design) con paletas tecnopedagógicas.</li>
+            <li><strong>JavaScript (Vanilla):</strong> Lógica de eventos nativos, manipulación dinámica del DOM y APIs de arrastrar y soltar (Drag and Drop).</li>
+            <li><strong>Google Forms API:</strong> Procesamiento en segundo plano de datos mediante formularios asíncronos distribuidos.</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
