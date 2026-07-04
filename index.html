@@ -8,7 +8,7 @@
   <style>
     /* Estilos existentes */
     #intervencion .card-content { padding: 0; }
-    #intervencion iframe {
+    #intervencion iframe, #interaccion iframe {
       width: 100vw !important;
       height: calc(100vh - 210px) !important;
       min-height: 500px;
@@ -19,7 +19,7 @@
       background: #f1faff;
     }
     @media (max-width: 700px) {
-      #intervencion iframe { height: 60vh !important; min-height: 300px; }
+      #intervencion iframe, #interaccion iframe { height: 60vh !important; min-height: 300px; }
     }
 
     #preparacion .card-content > div[style*="#fffbe7"],
@@ -138,7 +138,7 @@
       display: block;
     }
 
-    /* --- ESTILOS AGREGADOS PARA EL CALENDARIO (IMG-20260701-WA0013.jpg) --- */
+    /* --- ESTILOS AGREGADOS PARA EL CALENDARIO --- */
     .calendar-header-container {
       display: flex;
       justify-content: space-between;
@@ -247,6 +247,7 @@
   <button onclick="showSection('calendario')">Calendario de Clases</button>
   <button onclick="showSection('preparacion')">Preparación de Clase</button>
   <button onclick="showSection('intervencion')">Intervención Educativa</button>
+  <button onclick="showSection('interaccion')">Interacción</button>
   <button onclick="showSection('utilidad')">Utilidad de la Evaluación</button>
   <button onclick="showSection('instrumentos')">Instrumentos de Evaluación</button>
 </nav>
@@ -412,11 +413,9 @@
       <div class="card-content">
         <h2>Teorías de la Enseñanza y el Currículo</h2>
         
-        <!-- APARTADO MOVIDO: AHORA ESTÁ ARRIBA DE LOS AUTORES -->
         <div style="margin-top:14px; margin-bottom:28px; background:#f9f9f9; border-radius:10px; padding:18px; border: 1.5px dashed #0096c7;">
           <h3 style="color:#0077b6; margin-top:0; margin-bottom:12px;">¿Qué es la enseñanza?</h3>
           <div style="background:#f1faff; border-radius:8px; padding:12px; max-width:450px; margin: 0 auto;">
-            <!-- Puedes reemplazar "RUTA_DE_TU_VIDEO_ENSENANZA.mp4" con el archivo real de tu video -->
             <video src="La enseñanza.mp4" controls width="100%" style="border-radius:6px; display:block; min-height:200px; background:#000;"></video>
           </div>
         </div>
@@ -558,11 +557,10 @@
           </span>
         </div>
 
-        <!-- APARTADO AL FINAL DE LA PÁGINA PARA EL VIDEO -->
         <div style="margin-top:28px; background:#f9f9f9; border-radius:10px; padding:18px; border: 1.5px dashed #0096c7;">
           <h3 style="color:#0077b6; margin-top:0; margin-bottom:12px;">Otros modelos de enseñanza...</h3>
           <div style="background:#f1faff; border-radius:8px; padding:12px; max-width:450px; margin: 0 auto;">
-            <video src="Otros modelos.mp4" controls width="100%" style="border-radius:6px; display:block; min-height:200px; background:#000кой;"></video>
+            <video src="Otros modelos.mp4" controls width="100%" style="border-radius:6px; display:block; min-height:200px; background:#000;"></video>
           </div>
         </div>
 
@@ -639,6 +637,35 @@
           <div style="text-align:center; margin-top:8px;">
             <a href="Infografia_2.pdf" target="_blank" style="color:#0077b6; text-decoration:underline;">Ver o descargar infografía 2 en PDF</a>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN NUEVA: INTERACCIÓN CON GOOGLE CLASSROOM -->
+  <!-- SECCIÓN NUEVA: INTERACCIÓN CON GOOGLE CLASSROOM -->
+  <div id="interaccion" class="section">
+    <div class="card">
+      <div class="card-content">
+        <h2>Interacción</h2>
+        <p>Accede directamente a las actividades, tareas y materiales del grupo en Google Classroom.</p>
+        
+        <!-- Recuadro con el Código de la Clase -->
+        <div style="margin-bottom: 15px;">
+          <p style="background: #fffbe7; padding: 10px 14px; border-radius: 6px; border: 1.5px solid #ffe082; display: inline-block; margin: 0;">
+            <strong>Código de acceso a la clase:</strong> <code style="font-size: 1.2em; color: #b8860b;">bs4emgbp</code>
+          </p>
+        </div>
+
+        <!-- Botón de respaldo por si Google bloquea el iframe en ciertos navegadores -->
+        <div style="text-align: left; margin-bottom: 20px;">
+          <a href="https://classroom.google.com/c/ODY5MDM0NjMzMDly" target="_blank" style="display: inline-block; background: #0096c7; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.15); transition: background 0.2s;">
+            Abrir Classroom en una pestaña nueva
+          </a>
+        </div>
+
+        <div style="margin-top:18px;">
+          <iframe src="https://classroom.google.com/c/ODY5MDM0NjMzMDly" width="100%" height="85vh"></iframe>
         </div>
       </div>
     </div>
@@ -748,10 +775,8 @@
     const nombreAlumno = document.getElementById('nombre').value;
     document.getElementById('saludo-personalizado').innerText = `¡Bienvenido a Rincón Activo, ${nombreAlumno}!`;
     
-    // Mostrar la barra de navegación quitando la clase que la oculta
     document.getElementById('main-nav').classList.remove('hidden');
     
-    // Delay estratégico para que el formulario viaje al iframe oculto antes del cambio visual
     setTimeout(() => {
       showSection('bienvenida');
     }, 250);
@@ -765,7 +790,6 @@
     if (targetSection) {
       targetSection.classList.add('active');
     }
-    // Desplazar la pantalla arriba automáticamente al cambiar de sección
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -800,7 +824,6 @@
       const srcId = e.dataTransfer.getData('text/plain');
       const targetId = this.id;
       
-      // Intercambiar HTML e IDs para mantener rastreable el orden real
       dragSrcEl.innerHTML = this.innerHTML;
       dragSrcEl.id = targetId;
       
